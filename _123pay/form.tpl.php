@@ -39,7 +39,7 @@ if (!$result->status) {
         <?php } ?>
         <?php
         if ($failed)
-            echo "<strong>خظا</strong> " . $message . "<br />";
+            echo "<strong>خطا</strong> " . $message . "<br />";
         ?>
     </form>
 </div>
