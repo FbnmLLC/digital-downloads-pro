@@ -33,14 +33,14 @@ if (!isset($_REQUEST['State']) || !isset($_REQUEST['RefNum'])) {
 $State = $_REQUEST['State'];
 $RefNum = $_REQUEST['RefNum'];
 if ($State == 'OK') {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://123pay.ir/api/v1/verify/payment');
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "merchant_id=$merchant_id&RefNum=$RefNum");
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    $result = json_decode($response);
+	$ch = curl_init();
+	curl_setopt( $ch, CURLOPT_URL, 'https://123pay.ir/api/v1/verify/payment' );
+	curl_setopt( $ch, CURLOPT_POSTFIELDS, "merchant_id=$merchant_id&RefNum=$RefNum" );
+	curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	$response = curl_exec( $ch );
+	curl_close( $ch );
+	$result = json_decode( $response );
     if ($result->status) {
         $plmessage = "پرداخت شما با موفقیت دریافت شد. شناسه تراکنش شما: {$RefNum}";
         $failed = false;

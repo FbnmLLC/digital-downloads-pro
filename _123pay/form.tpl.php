@@ -16,13 +16,13 @@ $coded_data = base64_encode($coded_data);
 $callback_url = SITEURL . "/gateways/" . $row->dir . "/ipn.php?data=$coded_data";
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://123pay.ir/api/v1/create/payment');
-curl_setopt($ch, CURLOPT_POSTFIELDS, "merchant_id=$merchant_id&amount=$amount&callback_url=$callback_url");
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-$response = curl_exec($ch);
-curl_close($ch);
-$result = json_decode($response);
+curl_setopt( $ch, CURLOPT_URL, 'https://123pay.ir/api/v1/create/payment' );
+curl_setopt( $ch, CURLOPT_POSTFIELDS, "merchant_id=$merchant_id&amount=$amount&callback_url=$callback_url" );
+curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+$response = curl_exec( $ch );
+curl_close( $ch );
+$result = json_decode( $response );
 
 $failed = false;
 if (!$result->status) {
