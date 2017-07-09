@@ -13,7 +13,7 @@ $amount = ($row->extra2 == 'IRT') ? intval($discount * 10) : intval($discount);
 $coded_data = "pl_id={$row->id}&amount={$discount}&custom=" . $user->uid . '_' . $user->sesid;
 $coded_data = base64_encode($coded_data);
 
-$callback_url = SITEURL . "/gateways/" . $row->dir . "/ipn.php?data=$coded_data";
+$callback_url = urlencode( SITEURL . "/gateways/" . $row->dir . "/ipn.php?data=$coded_data" );
 
 $ch = curl_init();
 curl_setopt( $ch, CURLOPT_URL, 'https://123pay.ir/api/v1/create/payment' );
